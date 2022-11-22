@@ -38,7 +38,7 @@ I built on this work because I use a slightly different workflow for my projects
 - Clone this repo
 - Build docker image
     - Build docker image `docker build -t mb-gnuradio-image .`
-    - Run docker container `docker run --name mb-gnuradio -it gnuradio-image`
+    - Run docker container `docker run --name mb-gnuradio -it mb-gnuradio-image`
     - Stop running container
 - Prepare container
     - Start container and connect to it `docker start -i mb-gnuradio`
