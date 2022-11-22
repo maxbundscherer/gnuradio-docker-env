@@ -6,7 +6,7 @@ Just another custom docker environment for GNU Radio. Tested on M1 Macs and GNU 
 
 [![shields.io](https://img.shields.io/badge/license-Apache2-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
-Author: [Maximilian Bundscherer](https://bundscherer-online.de)
+Maintainer: [Maximilian Bundscherer](https://bundscherer-online.de)
 
 ## Overview
 
