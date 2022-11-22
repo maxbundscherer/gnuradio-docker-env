@@ -1,4 +1,4 @@
-# ml-docker
+# gnuradio-docker-env
 
 Just another custom docker environment for GNU Radio. Tested on M1 Macs and GNU Radio Version 3.9.x. gr-osmosdr is included.
 
