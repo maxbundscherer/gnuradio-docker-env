@@ -1,8 +1,8 @@
 # gnuradio-docker-env
 
-Just another custom docker environment for GNU Radio. Tested on M1 Macs and GNU Radio Version 3.9.x. gr-osmosdr is included.
+Just another custom docker environment for GNU Radio. Tested on M1 Macs and GNU Radio 3.9.x. Custom dependencies are included.
 
-``gnuradio - docker - mac - linux - ui`` 
+``gnuradio - companion - docker - macos - linux`` 
 
 [![shields.io](https://img.shields.io/badge/license-Apache2-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
@@ -66,7 +66,7 @@ I built on this work because I use a slightly different workflow for my projects
     ```
     - Stop running container
 
-#### Dependencies installation
+#### Dependencies Installation
 
 - Add custom dependencies (gr-osmosdr)
     - Start container and connect to it `docker start -i mb-gnuradio`
