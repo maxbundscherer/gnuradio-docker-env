@@ -48,7 +48,6 @@ I built on this work because I use a slightly different workflow for my projects
         - `cd gnuradio`
         - `git checkout maint-3.9`
         - `git submodule update --init --recursive`
-        - `cd ..`
 - Install and compile GNU Radio
     - `mkdir build`
     - `cd build`
