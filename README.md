@@ -42,13 +42,13 @@ I built on this work because I use a slightly different workflow for my projects
     - Stop running container
 - Prepare container
     - Start container and connect to it `docker start -i mb-gnuradio`
-    - Install dependencies `apt install vim swig libczmq`
+    - Install dependencies `apt install vim swig -y`
     - Clone GNU Radio `git clone https://github.com/gnuradio/gnuradio`
     - Checkout desired version (in this case **3.9.x**)
         - `cd gnuradio`
-        - `git checkout maint-3.9;`
+        - `git checkout maint-3.9`
         - `git submodule update --init --recursive`
-        - ` cd ..`
+        - `cd ..`
 - Install and compile GNU Radio
     - `mkdir build`
     - `cd build`
