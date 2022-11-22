@@ -41,9 +41,9 @@ I built on this work because I use a slightly different workflow for my projects
     - Run docker container
     ```
     docker run --name mb-gnuradio \
-        -v mb-gr_prefix:/root/gr_prefix/ \
-        -v mb-gnuradio:/root/gr_prefix/src/gnuradio/ \
-        -v mb-gr_build:/root/gr_prefix/src/gnuradio/build/ \
+        -v "$(pwd)"/mount-gr_prefix:/root/gr_prefix/ \
+        -v "$(pwd)"/mount-gnuradio:/root/gr_prefix/src/gnuradio/ \
+        -v "$(pwd)"/mount-gr_build:/root/gr_prefix/src/gnuradio/build/ \
         -it mb-gnuradio-image
     ```
     - Stop running container
