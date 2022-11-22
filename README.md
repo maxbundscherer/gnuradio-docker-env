@@ -1,4 +1,4 @@
-# gnuradio-docker-env
+# GNU Radio Docker Environment
 
 Just another custom docker environment for GNU Radio. Tested on M1 Macs and GNU Radio 3.9.x. Custom dependencies are included.
 
