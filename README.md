@@ -40,7 +40,6 @@ I built on this work because I use a slightly different workflow for my projects
     - Build docker image `docker build -t mb-gnuradio-image .`
     - Run docker container `docker run --name mb-gnuradio -it gnuradio-image`
     - Stop running container
-
 - Prepare container
     - Start container and connect to it `docker start -i mb-gnuradio`
     - Install dependencies `apt install vim swig libczmq`
@@ -50,7 +49,6 @@ I built on this work because I use a slightly different workflow for my projects
         - `git checkout maint-3.9;`
         - `git submodule update --init --recursive`
         - ` cd ..`
-
 - Install and compile GNU Radio
     - `mkdir build`
     - `cd build`
@@ -58,7 +56,6 @@ I built on this work because I use a slightly different workflow for my projects
     - `make -j4`
     - `make install`
     - `ldconfig`
-
 - Config GNU Radio
     - `vim /root/.bashrc`
     - Add lines
