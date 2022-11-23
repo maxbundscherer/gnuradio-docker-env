@@ -21,6 +21,7 @@ I built on this work because I use a slightly different workflow for my projects
 - Start XQuartz `xhost + 127.0.0.1` (opens XQuartz UI)
 - Start container and connect to it `docker start -i mb-gnuradio`
 - Run `gnuradio-companion`
+- Read *More* selection below
 
 ### Install on macOS
 
