@@ -21,7 +21,7 @@ I built on this work because I use a slightly different workflow for my projects
 - Start XQuartz `xhost + 127.0.0.1` (opens XQuartz UI)
 - Start container and connect to it `docker start -i mb-gnuradio`
 - Run `gnuradio-companion`
-- Read *More* selection below
+- Read ``More selection`` below
 
 ### Install on macOS
 
@@ -50,7 +50,7 @@ I built on this work because I use a slightly different workflow for my projects
     - Stop running container
 - Prepare container
     - Start container and connect to it `docker start -i mb-gnuradio`
-    - Install dependencies `apt install vim swig vim-gtk libsndfile1-dev -y` (libsndfile1-dev audo-wav-file, vim-gtk editor)
+    - Install dependencies `apt install vim swig vim-gtk libsndfile1-dev -y` (``libsndfile1-dev`` audo-wav-file, ``vim-gtk`` editor)
     - Clone GNU Radio `git clone https://github.com/gnuradio/gnuradio`
     - Checkout desired version (in this case **3.9.x**)
         - `cd gnuradio`
