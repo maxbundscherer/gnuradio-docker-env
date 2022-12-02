@@ -107,11 +107,13 @@ I built on this work because I use a slightly different workflow for my projects
 ##### GR-OSMOSDR
 
 - Start container and connect to it `docker start -i mb-gnuradio`
+- Install dependencies `apt install librtlsdr-dev -y` (RTL-SDR support)
+- Install dependencies `apt install rtl-sdr -y` (`rtl_test` support)
 - Clone gr-osmosdr `git clone https://github.com/osmocom/gr-osmosdr`
 - `cd gr-osmosdr`
 - `mkdir build`
 - `cd build`
-- `cmake ..`
+- `cmake ..` (if RTL-SDR not working, try adding `-DENABLE_RTL=ON`)
 - `make`
 - `make install`
 - `ldconfig`
