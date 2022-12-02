@@ -38,13 +38,13 @@ I built on this work because I use a slightly different workflow for my projects
 - Test and configure XQuartz
     - `xhost + 127.0.0.1` (opens XQuartz UI)
     - Open settings in XQuartz UI and allow connections from network clients in the security tab
-    - `docker run -e DISPLAY=host.docker.internal:0 gns3/xeyes` (runs docker container with xeyes connected to XQuartz)
+    - `docker run -e DISPLAY=host.docker.internal:0 gns3/xeyes` (runs docker container with xeyes connected to XQuartz - for testing ui)
 
 #### XQuartz Config (only Ubuntu)
 
 - Configure XQuartz to allow connections from docker
     - `xhost +local:docker`
-    - `docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro gns3/xeyes` (runs docker container with xeyes connected to XQuartz)
+    - `docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro gns3/xeyes` (runs docker container with xeyes connected to XQuartz - for testing ui)
 
 #### Docker Image and Container on Ubuntu and macOs
 
