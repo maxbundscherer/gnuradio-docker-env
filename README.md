@@ -46,7 +46,7 @@ I built on this work because I use a slightly different workflow for my projects
     - `xhost +local:docker`
     - `docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro gns3/xeyes` (runs docker container with xeyes connected to XQuartz - for testing ui)
 
-#### Docker Image and Container on Ubuntu and macOs
+#### Docker Image and Container (on Ubuntu and macOs)
 
 - Clone this repo
 - Build docker image
