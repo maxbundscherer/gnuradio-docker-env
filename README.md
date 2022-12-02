@@ -23,9 +23,9 @@ I built on this work because I use a slightly different workflow for my projects
 - Run `gnuradio-companion`
 - Read ``More selection`` below
 
-### Install on macOS
+### Install
 
-#### XQuartz Installation
+#### XQuartz Installation (only macOS)
 
 - [XQuartz](https://www.xquartz.org/) is required to run X11 applications in a Docker container. This is necessary because, for example, `gnuradio-companion` uses the graphical user interface.
 - Restart mac after installation of XQuartz
@@ -34,17 +34,33 @@ I built on this work because I use a slightly different workflow for my projects
     - Open settings in XQuartz UI and allow connections from network clients in the security tab
     - `docker run -e DISPLAY=host.docker.internal:0 gns3/xeyes` (runs docker container with xeyes connected to XQuartz)
 
-#### Docker Image and Container
+#### XQuartz Config (only Ubuntu)
+
+- Configure XQuartz to allow connections from docker
+    - `xhost +local:docker`
+    - `docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro gns3/xeyes` (runs docker container with xeyes connected to XQuartz)
+
+#### Docker Image and Container on Ubuntu and macOs
 
 - Clone this repo
 - Build docker image
     - Build docker image `docker build -t mb-gnuradio-image .`
-    - Run docker container
+    - Run docker container (macOS)
     ```
     docker run --name mb-gnuradio \
         -v "$(pwd)"/mount-gr_prefix:/root/gr_prefix/ \
         -v "$(pwd)"/mount-gnuradio:/root/gr_prefix/src/gnuradio/ \
         -v "$(pwd)"/mount-gr_build:/root/gr_prefix/src/gnuradio/build/ \
+        -it mb-gnuradio-image
+    ```
+    - Run docker container (Ubuntu)
+    ```
+    docker run --name mb-gnuradio \
+        -v "$(pwd)"/mount-gr_prefix:/root/gr_prefix/ \
+        -v "$(pwd)"/mount-gnuradio:/root/gr_prefix/src/gnuradio/ \
+        -v "$(pwd)"/mount-gr_build:/root/gr_prefix/src/gnuradio/build/ \
+        -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+        -e DISPLAY=$DISPLAY \
         -it mb-gnuradio-image
     ```
     - Stop running container
@@ -65,7 +81,7 @@ I built on this work because I use a slightly different workflow for my projects
     - `ldconfig`
 - Config GNU Radio
     - `vim /root/.bashrc`
-    - Add lines
+    - Add lines (only on macOS)
     ```
     export DISPLAY=host.docker.internal:0
     export GRC_BLOCKS_PATH=/usr/local/share/gnuradio/grc/blocks
