@@ -75,17 +75,32 @@ I built on this work because I use a slightly different workflow for my projects
 
 #### Dependencies Installation
 
-- Add custom dependencies (gr-osmosdr)
-    - Start container and connect to it `docker start -i mb-gnuradio`
-    - Clone gr-osmosdr `git clone https://github.com/osmocom/gr-osmosdr`
-    - `cd gr-osmosdr`
-    - `mkdir build`
-    - `cd build`
-    - `cmake ..`
-    - `make`
-    - `make install`
-    - `ldconfig`
-    - Stop running container
+##### GR-OSMOSDR
+
+- Start container and connect to it `docker start -i mb-gnuradio`
+- Clone gr-osmosdr `git clone https://github.com/osmocom/gr-osmosdr`
+- `cd gr-osmosdr`
+- `mkdir build`
+- `cd build`
+- `cmake ..`
+- `make`
+- `make install`
+- `ldconfig`
+- Stop running container
+
+##### GR-SIGMF
+
+- Install dependencies ` apt install rapidjson-dev -y`
+- Start container and connect to it `docker start -i mb-gnuradio`
+- Clone gr-sigmf `git clone https://github.com/skysafe/gr-sigmf`
+- `cd gr-sigmf`
+- `mkdir build`
+- `cd build`
+- `cmake ..`
+- `make`
+- `make install`
+- `ldconfig`
+- Stop running container
 
 ## More
 
