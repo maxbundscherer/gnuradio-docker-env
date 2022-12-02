@@ -67,6 +67,7 @@ I built on this work because I use a slightly different workflow for my projects
         -v "$(pwd)"/mount-gr_build:/root/gr_prefix/src/gnuradio/build/ \
         -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
         -e DISPLAY=$DISPLAY \
+        --device /dev/bus/usb \
         -it mb-gnuradio-image
     ```
     - Stop running container
