@@ -88,9 +88,15 @@ I built on this work because I use a slightly different workflow for my projects
     - `ldconfig`
 - Config GNU Radio
     - `vim /root/.bashrc`
-    - Add lines (only on macOS)
+    - Add lines (macOS)
     ```
     export DISPLAY=host.docker.internal:0
+    export GRC_BLOCKS_PATH=/usr/local/share/gnuradio/grc/blocks
+    export PYTHONPATH=/usr/local/lib/python3/dist-packages/
+    ```
+    - Add lines (Ubuntu) (`:10.0` is output of `echo $DISPLAY`)
+    ```
+    export DISPLAY=:10.0
     export GRC_BLOCKS_PATH=/usr/local/share/gnuradio/grc/blocks
     export PYTHONPATH=/usr/local/lib/python3/dist-packages/
     ```
