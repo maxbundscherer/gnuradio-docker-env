@@ -151,29 +151,9 @@ I built on this work because I use a slightly different workflow for my projects
 - `gr_modtool add -t sync -l python` (Add Python QA code? y)
 - `mkdir build; cd build`
 - `cmake ..`
-- `make` (Read Known Issues)
+- `make` (Edit files)
 - `make install`
 - `ldconfig`
-
-#### Known Issues
-
-- Edit input params in `python/<BLOCK_NAME>.py` (fix `[numpy.float32]` in `__init__`)
-- Edit input params in `grc/<MODULE_NAME>_<BLOCK_NAME>.block.yml`
-```
-parameters:
-- id: inputStringParameter
-  label: InputStringLbl
-  dtype: string
-  default: helloWorld
-
-inputs:
-- label: in
-  dtype: float
-
-outputs:
-- label: in
-  dtype: float
-```
 
 #### Remove
 
