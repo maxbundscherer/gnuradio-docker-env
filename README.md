@@ -143,3 +143,38 @@ I built on this work because I use a slightly different workflow for my projects
 ### Editor
 
 - Use `/usr/bin/gvim` as editor in GNU Radio
+
+### OutOfTreeModules (OOT)
+
+- `gr_modtool newmod <MODULE_NAME> --srcdir /root/gr_prefix/gnuradio/gr-utils/modtool/templates/gr-newmod/`
+- `cd <MODULE_NAME>`
+- `gr_modtool add -t sync -l python` (Add Python QA code? y)
+- `mkdir build; cd build`
+- `cmake ..`
+- `make` (Read Known Issues)
+- `make install`
+- `ldconfig`
+
+#### Known Issues
+
+- Edit input params in `python/<BLOCK_NAME>.py` (fix `[numpy.float32]` in `__init__`)
+- Edit input params in `grc/<MODULE_NAME>_<BLOCK_NAME>.block.yml`
+```
+parameters:
+- id: inputStringParameter
+  label: InputStringLbl
+  dtype: string
+  default: helloWorld
+
+inputs:
+- label: in
+  dtype: float
+
+outputs:
+- label: in
+  dtype: float
+```
+
+#### Remove
+
+- `rm /usr/local/share/gnuradio/grc/blocks/<MODULE_NAME>_<BLOCK_NAME>.block.yml`
