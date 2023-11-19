@@ -14,6 +14,8 @@ First of all, I want to mention that I used [this GitHub Gist](https://gist.gith
 
 I built on this work because I use a slightly different workflow for my projects and because I work on both Macs and Linux servers.
 
+Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I customised my Dockerfile for the same reason.
+
 ## Let's get started
 
 ### Run on macOS
@@ -47,6 +49,74 @@ I built on this work because I use a slightly different workflow for my projects
     - `docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro gns3/xeyes` (runs docker container with xeyes connected to XQuartz - for testing ui)
 
 #### Docker Image and Container (on Ubuntu and macOs)
+
+- Clone this repo
+- Build docker image
+    - Build docker image `docker build -t mb-gnuradio-image .`
+    - Run docker container (macOS)
+    ```
+    docker run --name mb-gnuradio \
+        -v "$(pwd)"/mount-gr_persistent:/home/gnuradio/persistent/ \
+        -it mb-gnuradio-image
+    ```
+    - Run docker container (Ubuntu)
+    ```
+    docker run --name mb-gnuradio \
+        -v "$(pwd)"/mount-gr_persistent:/home/gnuradio/persistent/ \
+        -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+        -e DISPLAY=$DISPLAY \
+        --device /dev/bus/usb \
+        -it mb-gnuradio-image
+    ```
+    - Stop running container
+- Config GNU Radio
+    - Start container and connect to it `docker start -i mb-gnuradio`
+    - `sudo vim /root/.bashrc` and `vim .bashrc`
+    - Add lines (macOS)
+    ```
+    export DISPLAY=host.docker.internal:0
+    export GRC_BLOCKS_PATH=/usr/share/gnuradio/grc/block
+    ```
+    - Add lines (Ubuntu) (`:10.0` is output of `echo $DISPLAY`)
+    ```
+    export DISPLAY=:10.0
+    export GRC_BLOCKS_PATH=/usr/share/gnuradio/grc/block
+    ```
+    - Stop running container
+
+#### Dependencies Installation
+
+##### GR-OSMOSDR
+
+- Start container and connect to it `docker start -i mb-gnuradio`
+- Clone gr-osmosdr `git clone https://github.com/osmocom/gr-osmosdr`
+- `cd gr-osmosdr`
+- `mkdir build`
+- `cd build`
+- `cmake ..` (if RTL-SDR not working, try adding `-DENABLE_RTL=ON`)
+- `make`
+- `make install`
+- `ldconfig`
+- Stop running container
+
+##### GR-SIGMF
+
+- Start container and connect to it `docker start -i mb-gnuradio`
+- Clone gr-sigmf `git clone https://github.com/skysafe/gr-sigmf`
+- `cd gr-sigmf`
+- `mkdir build`
+- `cd build`
+- `cmake ..`
+- `make`
+- `make install`
+- `ldconfig`
+- Stop running container
+
+## Deprecated
+
+(see Dockerfile.deprecated)
+
+### DEPRECATED Docker Image and Container (on Ubuntu and macOs)
 
 - Clone this repo
 - Build docker image
@@ -101,39 +171,6 @@ I built on this work because I use a slightly different workflow for my projects
     export PYTHONPATH=/usr/local/lib/python3/dist-packages/
     ```
     - Stop running container
-
-#### Dependencies Installation
-
-##### GR-OSMOSDR
-
-- Start container and connect to it `docker start -i mb-gnuradio`
-- Install dependencies `apt install librtlsdr-dev -y` (RTL-SDR support)
-- Install dependencies `apt install rtl-sdr -y` (`rtl_test` support)
-- Clone gr-osmosdr `git clone https://github.com/osmocom/gr-osmosdr`
-- `cd gr-osmosdr`
-- `mkdir build`
-- `cd build`
-- `cmake ..` (if RTL-SDR not working, try adding `-DENABLE_RTL=ON`)
-- `make`
-- `make install`
-- `ldconfig`
-- Stop running container
-
-##### GR-SIGMF
-
-- Start container and connect to it `docker start -i mb-gnuradio`
-- Install dependencies `apt install rapidjson-dev -y`
-- Clone gr-sigmf `git clone https://github.com/skysafe/gr-sigmf`
-- `cd gr-sigmf`
-- `mkdir build`
-- `cd build`
-- `cmake ..`
-- `make`
-- `make install`
-- `ldconfig`
-- Stop running container
-
-## More
 
 ### Audio Output
 

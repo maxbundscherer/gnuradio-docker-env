@@ -1,54 +1,43 @@
-FROM ubuntu:focal
+FROM ubuntu:20.04
+LABEL maintainer="Federico 'Larroca' La rocca - flarroca@fing.edu.uy"
 
-# Utilities and libraries
-RUN apt update && \
-	DEBIAN_FRONTEND="noninteractive" apt install -y \
-	cmake \
-	doxygen \
-	g++ \
-	gir1.2-gtk-3.0 \
-	git \
-	libboost-all-dev \
-	libfftw3-dev \
-	libgmp3-dev \
-	liblog4cpp5-dev \
-	libqwt-qt5-dev \
-	python3-click-plugins \
-	python3-distutils \
-	python3-gi-cairo \
-	python3-mako \
-	python3-numpy \
-	python3-pip \
-	python3-pyqt5 \
-	python3-pyqtgraph \
-	python3-scipy \
-	python3-yaml \
-	qtbase5-dev \
-	clang-format
+#ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt install -y --no-install-recommends libuhd-dev
+RUN apt-get update
 
-# Pip dependencies
-RUN pip3 install "pybind11[global]" pygccxml
+# else it will output an error about Gtk namespace not found
+RUN apt-get install -y gir1.2-gtk-3.0
 
-# Volk
-RUN mkdir src/ && cd src/ && \
-	git clone --recursive https://github.com/gnuradio/volk.git && \
-	cd volk && mkdir build && cd build && \
-	cmake -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 ../ \
-	&& make && make test && make install
+# to have add-apt-repository available
+RUN apt-get install -y software-properties-common
 
-# Configure the paths required to run GR
-ENV GR_PREFIX=/root/gr_prefix
-WORKDIR $GR_PREFIX
-RUN PYSITEDIR=$(python3 -m site --user-site) && \
-	mkdir -p "$PYSITEDIR" && \
-	echo "$GR_PREFIX/lib/python3/dist-packages/" > "$PYSITEDIR/gnuradio.pth"
-RUN echo "$GR_PREFIX/lib/" >> /etc/ld.so.conf.d/gnuradio.conf
-RUN echo "export PATH=$GR_PREFIX/bin/:${PATH}" >> /root/.bashrc
+RUN add-apt-repository -y ppa:gnuradio/gnuradio-releases-3.9
 
-# Change the entrypoint to run ldconfig on startup
-ADD entrypoint.sh /bin/entrypoint
-RUN chmod +x /bin/entrypoint
-ENTRYPOINT ["/bin/entrypoint"]
-CMD ["/bin/bash"]
+# create user gnuario with sudo (and password gnuradio)
+RUN apt-get install -y sudo
+RUN useradd --create-home --shell /bin/bash -G sudo gnuradio
+RUN echo 'gnuradio:gnuradio' | chpasswd
+
+# I create a dir at home which I'll use to persist after the container is closed (need to change it's ownership)
+RUN mkdir /home/gnuradio/persistent  && chown gnuradio /home/gnuradio/persistent
+
+RUN apt-get update
+
+RUN apt-get install -y gnuradio
+
+# installing other packages needed for downloading and installing OOT modules
+RUN apt-get install -y gnuradio-dev cmake git libboost-all-dev libcppunit-dev liblog4cpp5-dev python3-pygccxml pybind11-dev liborc-dev
+
+# of course, nothing useful can be done without vim
+RUN apt-get install -y vim 
+
+# MB FEATURES
+RUN apt-get install -y rapidjson-dev swig libsndfile1-dev libuhd-dev uhd-host librtlsdr-dev rtl-sdr
+
+USER gnuradio
+
+WORKDIR /home/gnuradio
+
+ENV PYTHONPATH "${PYTHONPATH}:/usr/local/lib/python3/dist-packages"
+
+CMD bash
