@@ -24,13 +24,13 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 
 - Start XQuartz `xhost + 127.0.0.1` (opens XQuartz UI)
 - Start container and connect to it `docker start -i mb-gnuradio`
-- Run `gnuradio-companion`
+- Run `sudo gnuradio-companion`
 - Read ``More selection`` below
 
 ### Run on Ubuntu
 
 - Start container and connect to it `docker start -i mb-gnuradio`
-- Run `gnuradio-companion`
+- Run `sudo gnuradio-companion`
 - Read ``More selection`` below
 
 ## Install
