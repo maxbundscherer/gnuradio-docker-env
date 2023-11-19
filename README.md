@@ -18,6 +18,8 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 
 ## Let's get started
 
+- (`sudo` password is `gnuradio`)
+
 ### Run on macOS
 
 - Start XQuartz `xhost + 127.0.0.1` (opens XQuartz UI)
@@ -89,6 +91,7 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 #### GR-OSMOSDR
 
 - Start container and connect to it `docker start -i mb-gnuradio`
+- Switch to sudo `sudo -s`
 - Clone gr-osmosdr `git clone https://github.com/osmocom/gr-osmosdr`
 - `cd gr-osmosdr`
 - `mkdir build`
@@ -102,6 +105,7 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 #### GR-SIGMF
 
 - Start container and connect to it `docker start -i mb-gnuradio`
+- Switch to sudo `sudo -s`
 - Clone gr-sigmf `git clone https://github.com/skysafe/gr-sigmf`
 - `cd gr-sigmf`
 - `mkdir build`
