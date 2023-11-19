@@ -116,6 +116,12 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 - `ldconfig`
 - Stop running container
 
+## More
+
+### GUI-Editor
+
+- Use `/usr/bin/gvim` as editor in GNU Radio
+
 ## Deprecated
 
 (see Dockerfile.deprecated)
@@ -180,10 +186,6 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 
 - Use UDP Sink in GNU Radio and `nc -l -u 0.0.0.0 7360 | play -t raw -esigned-integer -b 16 -r 48000 -` on your host
 - (alternative) Use Wave-File Sink in GNU Radio
-
-### Editor
-
-- Use `/usr/bin/gvim` as editor in GNU Radio
 
 ### OutOfTreeModules (OOT)
 

@@ -29,7 +29,8 @@ RUN apt-get install -y gnuradio
 RUN apt-get install -y gnuradio-dev cmake git libboost-all-dev libcppunit-dev liblog4cpp5-dev python3-pygccxml pybind11-dev liborc-dev
 
 # of course, nothing useful can be done without vim
-RUN apt-get install -y vim 
+RUN apt-get install -y vim
+RUN apt-get install -y vim-gtk3
 
 # MB FEATURES
 RUN apt-get install -y rapidjson-dev swig libsndfile1-dev libuhd-dev uhd-host librtlsdr-dev rtl-sdr
