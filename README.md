@@ -31,9 +31,9 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 - Run `gnuradio-companion`
 - Read ``More selection`` below
 
-### Install
+## Install
 
-#### XQuartz Installation (only macOS)
+### XQuartz Installation (only macOS)
 
 - [XQuartz](https://www.xquartz.org/) is required to run X11 applications in a Docker container. This is necessary because, for example, `gnuradio-companion` uses the graphical user interface.
 - Restart mac after installation of XQuartz
@@ -42,13 +42,13 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
     - Open settings in XQuartz UI and allow connections from network clients in the security tab
     - `docker run -e DISPLAY=host.docker.internal:0 gns3/xeyes` (runs docker container with xeyes connected to XQuartz - for testing ui)
 
-#### XQuartz Config (only Ubuntu)
+### XQuartz Config (only Ubuntu)
 
 - Configure XQuartz to allow connections from docker
     - `xhost +local:docker`
     - `docker run -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:ro gns3/xeyes` (runs docker container with xeyes connected to XQuartz - for testing ui)
 
-#### Docker Image and Container (on Ubuntu and macOs)
+### Docker Image and Container (on Ubuntu and macOs)
 
 - Clone this repo
 - Build docker image
@@ -84,9 +84,9 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
     ```
     - Stop running container
 
-#### Dependencies Installation
+### Dependencies Installation
 
-##### GR-OSMOSDR
+#### GR-OSMOSDR
 
 - Start container and connect to it `docker start -i mb-gnuradio`
 - Clone gr-osmosdr `git clone https://github.com/osmocom/gr-osmosdr`
@@ -99,7 +99,7 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 - `ldconfig`
 - Stop running container
 
-##### GR-SIGMF
+#### GR-SIGMF
 
 - Start container and connect to it `docker start -i mb-gnuradio`
 - Clone gr-sigmf `git clone https://github.com/skysafe/gr-sigmf`
