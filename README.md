@@ -87,9 +87,14 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
     export DISPLAY=host.docker.internal:0
     export GRC_BLOCKS_PATH=/usr/share/gnuradio/grc/block
     ```
-    - Add lines (Ubuntu) (`:10.0` is output of `echo $DISPLAY`)
+    - Add lines (Ubuntu)
     ```
+    (`:10.0` is output of `echo $DISPLAY`)
     export DISPLAY=:10.0
+    export GRC_BLOCKS_PATH=/usr/share/gnuradio/grc/block
+    ```
+    - Add lines (Ubuntu Server in HPC)
+    ```
     export GRC_BLOCKS_PATH=/usr/share/gnuradio/grc/block
     ```
     - Stop running container
