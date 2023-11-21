@@ -70,6 +70,14 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
         --device /dev/bus/usb \
         -it mb-gnuradio-image
     ```
+    - Run docker container (Ubuntu Server in HPC)
+    ```
+    mkdir mount-gr_persistent
+    chmod 777 -R mount-gr_persistent
+    docker run --name mb-gnuradio \
+        -v "$(pwd)"/mount-gr_persistent:/home/gnuradio/persistent/ \
+        -it mb-gnuradio-image
+    ```
     - Stop running container
 - Config GNU Radio
     - Start container and connect to it `docker start -i mb-gnuradio`
