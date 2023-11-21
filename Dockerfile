@@ -14,9 +14,9 @@ RUN apt-get install -y software-properties-common
 RUN add-apt-repository -y ppa:gnuradio/gnuradio-releases-3.9
 
 # create user gnuario with sudo (and password gnuradio)
-RUN apt-get install -y sudo
+# RUN apt-get install -y sudo
 RUN useradd --create-home --shell /bin/bash -G sudo gnuradio
-RUN echo 'gnuradio:gnuradio' | chpasswd
+# RUN echo 'gnuradio:gnuradio' | chpasswd
 
 # I create a dir at home which I'll use to persist after the container is closed (need to change it's ownership)
 RUN mkdir /home/gnuradio/persistent  && chown gnuradio /home/gnuradio/persistent

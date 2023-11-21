@@ -18,19 +18,17 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 
 ## Let's get started
 
-- (`sudo` password is `gnuradio`)
-
 ### Run on macOS
 
 - Start XQuartz `xhost + 127.0.0.1` (opens XQuartz UI)
 - Start container and connect to it `docker start -i mb-gnuradio`
-- Run `sudo gnuradio-companion`
+- Run `gnuradio-companion`
 - Read ``More selection`` below
 
 ### Run on Ubuntu
 
 - Start container and connect to it `docker start -i mb-gnuradio`
-- Run `sudo gnuradio-companion`
+- Run `gnuradio-companion`
 - Read ``More selection`` below
 
 ## Install
@@ -73,7 +71,7 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
     - Stop running container
 - Config GNU Radio
     - Start container and connect to it `docker start -i mb-gnuradio`
-    - `sudo vim /root/.bashrc` and `vim .bashrc`
+    - `vim .bashrc`
     - Add lines (macOS)
     ```
     export DISPLAY=host.docker.internal:0
@@ -91,7 +89,6 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 #### GR-OSMOSDR
 
 - Start container and connect to it `docker start -i mb-gnuradio`
-- Switch to sudo `sudo -s`
 - Clone gr-osmosdr `git clone https://github.com/osmocom/gr-osmosdr`
 - `cd gr-osmosdr`
 - `mkdir build`
@@ -105,7 +102,6 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 #### GR-SIGMF
 
 - Start container and connect to it `docker start -i mb-gnuradio`
-- Switch to sudo `sudo -s`
 - Clone gr-sigmf `git clone https://github.com/skysafe/gr-sigmf`
 - `cd gr-sigmf`
 - `mkdir build`
