@@ -54,80 +54,11 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
 
 - Clone this repo
 - Build docker image
-    - Build docker image `docker build -t mb-gnuradio-image .`
-    - Run docker container (macOS)
-    ```
-    docker run --name mb-gnuradio \
-        -v "$(pwd)"/mount-gr_persistent:/home/gnuradio/persistent/ \
-        -it mb-gnuradio-image
-    ```
-    - Run docker container (Ubuntu)
-    ```
-    docker run --name mb-gnuradio \
-        -v "$(pwd)"/mount-gr_persistent:/home/gnuradio/persistent/ \
-        -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
-        -e DISPLAY=$DISPLAY \
-        --device /dev/bus/usb \
-        -it mb-gnuradio-image
-    ```
-    - Run docker container (Ubuntu Server in HPC)
-    ```
-    mkdir mount-gr_persistent
-    chmod 777 -R mount-gr_persistent
-    docker run --name mb-gnuradio \
-        -v "$(pwd)"/mount-gr_persistent:/home/gnuradio/persistent/ \
-        -it mb-gnuradio-image
-    ```
-    - Stop running container
-- Config GNU Radio
-    - Start container and connect to it `docker start -i mb-gnuradio`
-    - `sudo vim /root/.bashrc` and `vim .bashrc`
-    - Add lines (macOS)
-    ```
-    export DISPLAY=host.docker.internal:0
-    export GRC_BLOCKS_PATH=/usr/share/gnuradio/grc/block
-    ```
-    - Add lines (Ubuntu)
-    ```
-    (`:10.0` is output of `echo $DISPLAY`)
-    export DISPLAY=:10.0
-    export GRC_BLOCKS_PATH=/usr/share/gnuradio/grc/block
-    ```
-    - Add lines (Ubuntu Server in HPC)
-    ```
-    export GRC_BLOCKS_PATH=/usr/share/gnuradio/grc/block
-    ```
-    - Stop running container
+    - Build docker container (macOS) `./build-macOS.sh`
+    - Build docker container (Ubuntu) `./build-ubuntu.sh`
+    - Build docker container (Ubuntu Server in HPC) `./build-ubuntuHPC.sh`
 
-### Dependencies Installation
-
-#### GR-OSMOSDR
-
-- Start container and connect to it `docker start -i mb-gnuradio`
-- Switch to sudo `sudo -s`
-- Clone gr-osmosdr `git clone https://github.com/osmocom/gr-osmosdr`
-- `cd gr-osmosdr`
-- `mkdir build`
-- `cd build`
-- `cmake ..` (if RTL-SDR not working, try adding `-DENABLE_RTL=ON`)
-- `make`
-- `make install`
-- `ldconfig`
-- Stop running container
-
-#### GR-SIGMF
-
-- Start container and connect to it `docker start -i mb-gnuradio`
-- Switch to sudo `sudo -s`
-- Clone gr-sigmf `git clone https://github.com/skysafe/gr-sigmf`
-- `cd gr-sigmf`
-- `mkdir build`
-- `cd build`
-- `cmake ..`
-- `make`
-- `make install`
-- `ldconfig`
-- Stop running container
+- Kill container after first start
 
 ## More
 

@@ -35,9 +35,32 @@ RUN apt-get install -y vim-gtk3
 # MB FEATURES
 RUN apt-get install -y rapidjson-dev swig libsndfile1-dev libuhd-dev uhd-host librtlsdr-dev rtl-sdr
 
+# [MB Custom ENV START]
+
+# BASHRC
+RUN echo "export GRC_BLOCKS_PATH=/usr/share/gnuradio/grc/block" >> /home/gnuradio/.bashrc
+
+RUN echo "export GRC_BLOCKS_PATH=/usr/share/gnuradio/grc/block" >> /root/.bashrc
+
+# DEPENDENCIES
+
+RUN git clone https://github.com/skysafe/gr-sigmf
+RUN cd gr-sigmf && mkdir build && cd build && cmake .. && make && make install && ldconfig
+
+RUN git clone https://github.com/osmocom/gr-osmosdr
+RUN cd gr-osmosdr && mkdir build && cd build && cmake .. && make && make install && ldconfig
+
+# [MB Custom ENV STOP]
+
 USER gnuradio
 
 WORKDIR /home/gnuradio
+
+# [MB Custom ENV START]
+
+EXPOSE 5096
+
+# [MB Custom ENV STOP]
 
 ENV PYTHONPATH "${PYTHONPATH}:/usr/local/lib/python3/dist-packages"
 
