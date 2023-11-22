@@ -57,7 +57,6 @@ Later I used this [repo](https://github.com/git-artes/docker-gnuradio). I custom
     - Build docker container (macOS) `./build-macOS.sh`
     - Build docker container (Ubuntu) `./build-ubuntu.sh`
     - Build docker container (Ubuntu Server in HPC) `./build-ubuntuHPC.sh`
-
 - Kill container after first start
 
 ## More
