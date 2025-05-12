@@ -9,7 +9,7 @@ echo "[SAAB FILE]"
     --file-name-out "/home/gnuradio/tmpFiles/out-Recording--9209219564926794108-1746696190891347.bin" \
     --samp-rate-file "125122.0" \
     --center-freq-file "3618500.0" \
-    --crp-channel-freq "3317000.0" \
+    --crp-channel-freq "3617000.0" \
     --crp-channel-width "20000.0" \
     --samp-rate-out "20000.0"
 
