@@ -1,0 +1,722 @@
+options:
+  parameters:
+    author: root
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: no_gui
+    hier_block_src_path: '.:'
+    id: sdr_cropper
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: run
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: sdr_cropper
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: variable_qtgui_label_0
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: (10,0)
+    label: samp_rate_file
+    type: real
+    value: samp_rate_file
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1520, 404.0]
+    rotation: 0
+    state: disabled
+- name: variable_qtgui_label_0_0
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: (11,0)
+    label: samp_rate_after_filter
+    type: real
+    value: (samp_rate_file/int(samp_rate_file/crp_channel_width))
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1520, 484.0]
+    rotation: 0
+    state: disabled
+- name: variable_qtgui_label_0_0_0
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: (12,0)
+    label: center_freq_file
+    type: real
+    value: center_freq_file
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1520, 564.0]
+    rotation: 0
+    state: disabled
+- name: variable_qtgui_label_0_0_0_0
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: (13,0)
+    label: crp_channel_freq
+    type: real
+    value: crp_channel_freq
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1720, 404.0]
+    rotation: 0
+    state: disabled
+- name: variable_qtgui_label_0_0_0_0_0
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: (14,0)
+    label: crp_channel_width
+    type: real
+    value: crp_channel_width
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1720, 492.0]
+    rotation: 0
+    state: disabled
+- name: variable_qtgui_label_0_0_0_0_0_0
+  id: variable_qtgui_label
+  parameters:
+    comment: ''
+    formatter: None
+    gui_hint: (15,0)
+    label: samp_rate_out
+    type: real
+    value: samp_rate_out
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1928, 404.0]
+    rotation: 0
+    state: disabled
+- name: analog_agc3_xx_0
+  id: analog_agc3_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    attack_rate: 1e-3
+    comment: ''
+    decay_rate: 1e-4
+    gain: '1.0'
+    iir_update_decim: '1'
+    max_gain: '65536'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    reference: '1.0'
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [256, 868.0]
+    rotation: 0
+    state: disabled
+- name: analog_sig_source_x_0_0
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: ''
+    freq: center_freq_file - crp_channel_freq
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate_file
+    type: complex
+    waveform: analog.GR_COS_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [128, 604.0]
+    rotation: 0
+    state: enabled
+- name: blocks_file_sink_0_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: file_name_out
+    type: complex
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1680, 868.0]
+    rotation: 0
+    state: disabled
+- name: blocks_file_sink_0_0_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: file_name_out
+    type: complex
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1680, 956.0]
+    rotation: 0
+    state: enabled
+- name: blocks_file_source_0_0
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: ''
+    file: file_name_in
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'False'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [128, 428.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_0_0_0_0
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [472, 568.0]
+    rotation: 0
+    state: enabled
+- name: blocks_throttle_0
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate_file
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [360, 460.0]
+    rotation: 0
+    state: disabled
+- name: center_freq_file
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: center_freq_file
+    short_id: ''
+    type: eng_float
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [568, 148.0]
+    rotation: 0
+    state: true
+- name: crp_channel_freq
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: crp_channel_freq
+    short_id: ''
+    type: eng_float
+    value: -5e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [832, 52.0]
+    rotation: 0
+    state: true
+- name: crp_channel_width
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: crp_channel_width
+    short_id: ''
+    type: eng_float
+    value: 0.6e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [832, 148.0]
+    rotation: 0
+    state: true
+- name: file_name_in
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: file_name_in
+    short_id: ''
+    type: str
+    value: '"testfiles/baudot.bin"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [320, 52.0]
+    rotation: 0
+    state: true
+- name: file_name_out
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: file_name_out
+    short_id: ''
+    type: str
+    value: '"testfiles/baudot-cropped.bin"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1128, 148.0]
+    rotation: 0
+    state: true
+- name: low_pass_filter_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: Erste Filterstufe!
+    cutoff_freq: crp_channel_width * 0.5
+    decim: int(samp_rate_file/crp_channel_width)
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate_file
+    type: fir_filter_ccf
+    width: crp_channel_width * 0.1
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [712, 684.0]
+    rotation: 0
+    state: disabled
+- name: low_pass_filter_0_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: Zweite Filterstufe!
+    cutoff_freq: crp_channel_width * 0.5
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate_out
+    type: fir_filter_ccf
+    width: crp_channel_width * 0.1
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1272, 708.0]
+    rotation: 0
+    state: disabled
+- name: low_pass_filter_0_0_0
+  id: low_pass_filter
+  parameters:
+    affinity: ''
+    alias: ''
+    beta: '6.76'
+    comment: Filterstufe Alternativ
+    cutoff_freq: crp_channel_width * 0.5
+    decim: '1'
+    gain: '1'
+    interp: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate_out
+    type: fir_filter_ccf
+    width: crp_channel_width * 0.1
+    win: window.WIN_HAMMING
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1008, 1052.0]
+    rotation: 0
+    state: enabled
+- name: mmse_resampler_xx_0_1_0
+  id: mmse_resampler_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    phase_shift: '0'
+    resamp_ratio: (samp_rate_file/int(samp_rate_file/crp_channel_width))/samp_rate_out
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1016, 672.0]
+    rotation: 0
+    state: disabled
+- name: mmse_resampler_xx_0_1_0_0
+  id: mmse_resampler_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    phase_shift: '0'
+    resamp_ratio: samp_rate_file/samp_rate_out
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [720, 928.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_sink_x_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate_file
+    comment: ''
+    fc: '0'
+    fftsize: '4096'
+    gui_hint: (1,0)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: File
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: window.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [712, 428.0]
+    rotation: 0
+    state: disabled
+- name: qtgui_sink_x_0_1
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate_file
+    comment: ''
+    fc: '0'
+    fftsize: '4096'
+    gui_hint: (1,1)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: Shifted
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: window.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [712, 548.0]
+    rotation: 0
+    state: disabled
+- name: qtgui_sink_x_0_1_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: (samp_rate_file/int(samp_rate_file/crp_channel_width))
+    comment: ''
+    fc: '0'
+    fftsize: '4096'
+    gui_hint: (2,0)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: Shifted Filtered
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: window.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1040, 460.0]
+    rotation: 0
+    state: disabled
+- name: qtgui_sink_x_0_1_0_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate_out
+    comment: ''
+    fc: '0'
+    fftsize: '4096'
+    gui_hint: (2,1)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: Shifted Resampled
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: window.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1272, 580.0]
+    rotation: 0
+    state: disabled
+- name: qtgui_sink_x_0_1_0_0_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate_out
+    comment: ''
+    fc: '0'
+    fftsize: '4096'
+    gui_hint: (3,1)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: Shifted Resampled Filtered
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: window.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1528, 724.0]
+    rotation: 0
+    state: disabled
+- name: qtgui_sink_x_0_1_0_0_1
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate_out
+    comment: ''
+    fc: '0'
+    fftsize: '4096'
+    gui_hint: (4,0)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: Only Resampled
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: window.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1208, 932.0]
+    rotation: 0
+    state: disabled
+- name: qtgui_sink_x_0_1_0_0_1_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate_out
+    comment: ''
+    fc: '0'
+    fftsize: '4096'
+    gui_hint: (4,1)
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: Only Resampled + Filter
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'False'
+    showrf: 'False'
+    type: complex
+    wintype: window.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1208, 1068.0]
+    rotation: 0
+    state: disabled
+- name: samp_rate_file
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: samp_rate_file
+    short_id: ''
+    type: eng_float
+    value: '44100'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [568, 52.0]
+    rotation: 0
+    state: true
+- name: samp_rate_out
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: samp_rate_out
+    short_id: ''
+    type: eng_float
+    value: 8e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1128, 52.0]
+    rotation: 0
+    state: true
+
+connections:
+- [analog_sig_source_x_0_0, '0', blocks_multiply_xx_0_0_0_0, '1']
+- [blocks_file_source_0_0, '0', blocks_multiply_xx_0_0_0_0, '0']
+- [blocks_file_source_0_0, '0', blocks_throttle_0, '0']
+- [blocks_multiply_xx_0_0_0_0, '0', low_pass_filter_0, '0']
+- [blocks_multiply_xx_0_0_0_0, '0', mmse_resampler_xx_0_1_0_0, '0']
+- [blocks_multiply_xx_0_0_0_0, '0', qtgui_sink_x_0_1, '0']
+- [blocks_throttle_0, '0', blocks_multiply_xx_0_0_0_0, '0']
+- [blocks_throttle_0, '0', qtgui_sink_x_0, '0']
+- [low_pass_filter_0, '0', mmse_resampler_xx_0_1_0, '0']
+- [low_pass_filter_0, '0', qtgui_sink_x_0_1_0, '0']
+- [low_pass_filter_0_0, '0', blocks_file_sink_0_0, '0']
+- [low_pass_filter_0_0, '0', qtgui_sink_x_0_1_0_0_0, '0']
+- [low_pass_filter_0_0_0, '0', blocks_file_sink_0_0_0, '0']
+- [low_pass_filter_0_0_0, '0', qtgui_sink_x_0_1_0_0_1_0, '0']
+- [mmse_resampler_xx_0_1_0, '0', low_pass_filter_0_0, '0']
+- [mmse_resampler_xx_0_1_0, '0', qtgui_sink_x_0_1_0_0, '0']
+- [mmse_resampler_xx_0_1_0_0, '0', low_pass_filter_0_0_0, '0']
+- [mmse_resampler_xx_0_1_0_0, '0', qtgui_sink_x_0_1_0_0_1, '0']
+
+metadata:
+  file_format: 1
