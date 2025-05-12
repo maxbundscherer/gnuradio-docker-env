@@ -5,11 +5,11 @@ echo "Start Extracting"
 echo
 echo "[RTL FILE]"
 /usr/bin/python3 sdr_cropper.py \
-    --file-name-in "/home/gnuradio/tmpFiles/gqrx_20240605_092523_144675000_1000000_fc.raw" \
-    --file-name-out "/home/gnuradio/tmpFiles/out-gqrx_20240605_092523_144855000_20000_fc.raw" \
+    --file-name-in "/home/gnuradio/tmpFiles/gqrx_20240815_111850_439400000_1000000_fc.raw" \
+    --file-name-out "/home/gnuradio/tmpFiles/out-gqrx_20240815_111850_439620000_20000_fc.raw" \
     --samp-rate-file "1000000.0" \
-    --center-freq-file "144675000.0" \
-    --crp-channel-freq "144855000.0" \
+    --center-freq-file "439400000.0" \
+    --crp-channel-freq "439620000.0" \
     --crp-channel-width "20000.0" \
     --samp-rate-out "20000.0"
 
