@@ -3,6 +3,20 @@
 echo "Start Extracting"
 
 echo
+echo "[SAAB FILE]"
+/usr/bin/python3 sdr_cropper.py \
+    --file-name-in "/home/gnuradio/tmpFiles/Recording--9223298801690170108-1723720731137887.bin" \
+    --file-name-out "/home/gnuradio/tmpFiles/out-Recording--9223298801690170108-1723720731137887.bin" \
+    --samp-rate-file "250244.0" \
+    --center-freq-file "439619000.0" \
+    --crp-channel-freq "439620000.0" \
+    --crp-channel-width "20000.0" \
+    --samp-rate-out "20000.0"
+
+echo "Stop Extracting"
+exit
+
+echo
 echo "[RTL FILE]"
 /usr/bin/python3 sdr_cropper.py \
     --file-name-in "/home/gnuradio/tmpFiles/gqrx_20240815_111850_439400000_1000000_fc.raw" \
@@ -12,10 +26,6 @@ echo "[RTL FILE]"
     --crp-channel-freq "439620000.0" \
     --crp-channel-width "20000.0" \
     --samp-rate-out "20000.0"
-
-echo "Stop Extracting"
-
-exit
 
 # Fourth tx
 

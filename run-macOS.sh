@@ -1,6 +1,6 @@
 docker run --name mb-gnuradio \
     -v "$(pwd)"/mount-gr_persistent:/home/gnuradio/persistent/ \
-    -v /Volumes/MBU-Drive/EMSIC/Radio-Exp-Rec/New-Radio-Exp-15-08-24/Raw-Rec-Mb:/home/gnuradio/tmpFiles/ \
+    -v /Volumes/MBU-Drive/EMSIC/Radio-Exp-Rec/New-Radio-Exp-15-08-24/Conv-Rec-Saab:/home/gnuradio/tmpFiles/ \
     -it mb-gnuradio-image
 
 exit
