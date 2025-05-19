@@ -1,3 +1,21 @@
+# 7 tx
+
+echo "Start Extracting"
+
+echo
+echo "[MB FILE]"
+/usr/bin/python3 sdr_cropper.py \
+    --file-name-in "/home/gnuradio/tmpFiles/gqrx_20250515_082642_144750000_1000000_fc.raw" \
+    --file-name-out "/home/gnuradio/tmpFiles/out-gqrx_20250515_082642_144872000_20000_fc.raw" \
+    --samp-rate-file "1000000.0" \
+    --center-freq-file "144750000.0" \
+    --crp-channel-freq "144872000.0" \
+    --crp-channel-width "20000.0" \
+    --samp-rate-out "20000.0"
+
+echo "Stop Extracting"
+exit
+
 # Six tx
 
 echo "Start Extracting"
@@ -12,9 +30,6 @@ echo "[SAAB FILE]"
     --crp-channel-freq "3617000.0" \
     --crp-channel-width "20000.0" \
     --samp-rate-out "20000.0"
-
-exit
-echo "Stop Extracting"
 
 # Fifth tx
 
