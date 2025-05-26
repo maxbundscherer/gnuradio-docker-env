@@ -1,3 +1,32 @@
+# 8 tx
+
+echo "Start Extracting"
+
+echo
+echo "[REC01]"
+/usr/bin/python3 sdr_cropper.py \
+    --file-name-in "/home/gnuradio/tmpFiles/rec01/Recording--9222984412315324408-1747591878768749.bin" \
+    --file-name-out "/home/gnuradio/tmpFiles/rec01/out-rec01-Recording--9222984412315324408-1747591878768749.bin" \
+    --samp-rate-file "125122.0" \
+    --center-freq-file "21117000.0" \
+    --crp-channel-freq "21116500.0" \
+    --crp-channel-width "20000.0" \
+    --samp-rate-out "20000.0"
+
+echo
+echo "[REC02]"
+/usr/bin/python3 sdr_cropper.py \
+    --file-name-in "/home/gnuradio/tmpFiles/rec02/Recording--9222984400849051008-1747591886965416.bin" \
+    --file-name-out "/home/gnuradio/tmpFiles/rec02/out-rec02-Recording--9222984400849051008-1747591886965416.bin" \
+    --samp-rate-file "125122.0" \
+    --center-freq-file "21117000.0" \
+    --crp-channel-freq "21116500.0" \
+    --crp-channel-width "20000.0" \
+    --samp-rate-out "20000.0"
+
+echo "Stop Extracting"
+exit
+
 # 7 tx
 
 echo "Start Extracting"
@@ -13,8 +42,6 @@ echo "[MB FILE]"
     --crp-channel-width "20000.0" \
     --samp-rate-out "20000.0"
 
-echo "Stop Extracting"
-exit
 
 # Six tx
 
